@@ -5,9 +5,9 @@ mongoose.connect('mongodb://localhost:27017/to-do');
 
 var userSchema = mongoose.Schema({
     name: String,
-    username: String,
-    email: String,
-    password: String,
+    username: {type: String, unique: true, required: true},
+    email: {type: String, unique:true, required:true},
+    password: {type: String, required:true},
     secretKey: String
 })
 
