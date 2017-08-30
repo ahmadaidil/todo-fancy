@@ -1,7 +1,7 @@
 'use strict'
 
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/to-do');
+// mongoose.connect('mongodb://localhost:27017/to-do');
 
 var userSchema = mongoose.Schema({
     name: String,
