@@ -6,7 +6,7 @@ const express = require('express'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
       cors = require('cors'),
-
+      mongoose = require('mongoose'),
       //All Route Files
       index = require('./routes/index'),
       users = require('./routes/users'),
@@ -23,6 +23,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
+
+mongoose.connect('mongodb://ahmadaidil:ahmadaidil@todoo-shard-00-00-pgpza.mongodb.net:27017,todoo-shard-00-01-pgpza.mongodb.net:27017,todoo-shard-00-02-pgpza.mongodb.net:27017/test?ssl=true&replicaSet=todoo-shard-0&authSource=admin');
 
 app.use('/index', index)
 app.use('/api/users', users);

@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost:27017/to-do');
+// mongoose.connect('mongodb://localhost:27017/to-do');
 
 var todoSchema = mongoose.Schema({
     userId: { type: Schema.ObjectId, ref: 'user' },
