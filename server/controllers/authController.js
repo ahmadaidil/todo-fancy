@@ -6,7 +6,7 @@ const dotenv = require('dotenv').config();
 exports.signup = (req, res) => {
   let secret = random.randStr(8);
   users.create({
-    name: req.body.name,
+    fullname: req.body.fullname,
     username: req.body.username,
     password: random.hash(req.body.password, secret),
     email: req.body.email,
@@ -31,11 +31,11 @@ exports.signin = (req, res) => {
         email: user.email
       }, process.env.SECRET_KEY, (err, token) => {
         if (err) console.log(err)
-        res.json(token)
+        res.send({err:false, token: token})
       });
     } else {
-      res.send('wrong password')
+      res.send({err: true, msg:'wrong password'})
     }
   })
-  .catch(err => res.send('username doesn\'t exist'))
+  .catch(err => res.send({err: true, msg:'username doesn\'t exist'}))
 }
