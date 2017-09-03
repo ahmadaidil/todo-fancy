@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 // mongoose.connect('mongodb://localhost:27017/to-do');
 
 var todoSchema = mongoose.Schema({
-    userId: { type: Schema.ObjectId, ref: 'user' },
+    userId: String,
     task: String,
     completed: {type: Boolean, default: false}
 })

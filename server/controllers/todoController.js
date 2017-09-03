@@ -8,6 +8,7 @@ const dotenv = require('dotenv').config();
 
 exports.createTodo = (req, res) => {
   jwt.verify(req.headers.token, process.env.SECRET_KEY, (err, decoded)=>{
+    // console.log(decoded)
     if(decoded == undefined) res.send('wrong token');
     else
       todo.create({
@@ -22,7 +23,7 @@ exports.createTodo = (req, res) => {
 
 exports.searchId = (req, res) => {
   jwt.verify(req.headers.token, process.env.SECRET_KEY, (err, decoded)=>{
-    //console.log(decoded);
+    // console.log(decoded);
     if(decoded == undefined) res.send('wrong token');
     else
       todo.find({

@@ -2,6 +2,8 @@ const users = require('../models/user');
 const random = require('../helpers/hash');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
+// const FB = require('fb');
+// const fb = new FB.Facebook({version: 'v2.8'});
 
 exports.signup = (req, res) => {
   let secret = random.randStr(8);
@@ -38,4 +40,19 @@ exports.signin = (req, res) => {
     }
   })
   .catch(err => res.send({err: true, msg:'username doesn\'t exist'}))
+}
+
+// const setAccessToken = (req, res, next) => {
+//   FB.setAccessToken(req.headers.fbaccesstoken);
+//   next()
+// }
+
+exports.signinFB = (req, res) => {
+  jwt.sign({
+    userId : req.body.userId,
+    fullname: req.body.fullname
+  }, process.env.SECRET_KEY, (err, token) => {
+    if (err) console.log(err)
+    res.send({err:false, token: token})
+  });
 }
